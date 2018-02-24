@@ -1,0 +1,9 @@
+[Plugin]
+Loader=python3
+Module=open_as_root
+IAge=3
+Name=Open as admin
+Name[fr]=Ouvrir en tant qu'admin
+Description=Open the current file with root privileges.
+Description[fr]=Ouvrir le fichier courant avec les privilèges administrateur.
+Website=https://github.com/Maestroschan/gedit-plugin-open-as-root
