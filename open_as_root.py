@@ -41,7 +41,7 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 	#this is called every time the gui is updated # FIXME which is stupid and under-optimal
 	def do_update_state(self):
 		# if there is no document in sight, we disable the action, so we don't get NoneException
-		if self.window.get_active_view() is None:
+		if self.window.get_active_document() is None or self.window.get_active_document().get_location() is None:
 			self.window.lookup_action('open_as_root').set_enabled(False)
 		# if the document is already opened as root, we disable the action too
 		elif 'admin' in self.window.get_active_document().get_location().get_uri_scheme():
