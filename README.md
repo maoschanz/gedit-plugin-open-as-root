@@ -8,6 +8,7 @@ For **gedit >= 3.22** (100% compatible with *Wayland*).
 
 ## Installation 
 
-Move `open_as_root.plugin` and `open_as_root.py` to `~/.local/share/gedit/plugins/`
+- Move `open_as_root.plugin` and `open_as_root.py` to `~/.local/share/gedit/plugins/`
+- Restart *gedit*
+- Activate the plugin in *Preferences*.
 
-Then restart *gedit* and activate the plugin in *Preferences*.

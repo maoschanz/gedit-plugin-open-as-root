@@ -28,7 +28,7 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 		GObject.Object.__init__(self)
 	
 	def do_activate(self):
-		# Defining the action which was set earlier in AppActivatable.
+		# Defining the action which was set earlier to the menu item earlier.
 		action = Gio.SimpleAction(name='open_as_root')
 		action.connect('activate', self.action_cb)
 		self.window.add_action(action)
@@ -43,18 +43,26 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 		pass
 	
 	def update_item_state(self, *args):
-		if self.window.get_active_document() is None or self.window.get_active_document().get_location() is None:
+		state = self.get_item_state()
+		self.window.lookup_action('open_as_root').set_enabled(state)
+
+	def get_item_state(self, *args):
+		if self.window.get_active_document() is None:
 			# if there is no document, we disable the action, so we don't get NoneException
-			self.window.lookup_action('open_as_root').set_enabled(False)
+			return False
+		elif self.window.get_active_document().get_location() is None:
+			# if the document isn't saved, we disable the action, so we don't get NoneException
+			return False
 		elif 'admin' in self.window.get_active_document().get_location().get_uri_scheme():
 			# if the document is already opened as root, we disable the action too
-			self.window.lookup_action('open_as_root').set_enabled(False)
+			return False
 		else:
-			self.window.lookup_action('open_as_root').set_enabled(True)
+			return True
 	
 	def action_cb(self, action, data):
 		doc = self.window.get_active_document()
-		my_uri = 'admin://' + doc.get_uri_for_display()
-		self.window.create_tab_from_location(Gio.File.new_for_uri(my_uri), None, 0, 0, False, True)
+		gfile = Gio.File.new_for_uri('admin://' + doc.get_uri_for_display())
+		self.window.create_tab_from_location(gfile, None, 0, 0, False, True)
 
-
+	############################################################################
+################################################################################

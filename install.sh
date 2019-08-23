@@ -8,7 +8,7 @@ fi
 
 mkdir -p $INSTALL_DIR
 
-echo "Installing extension files in $INSTALL_DIR"
+echo "Installing plugin files in $INSTALL_DIR"
 cp open_as_root.plugin $INSTALL_DIR/open_as_root.plugin
 cp open_as_root.py $INSTALL_DIR/open_as_root.py
 echo "Done."
