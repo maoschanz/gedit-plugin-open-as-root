@@ -9,4 +9,4 @@ Name[nl]=Openen als administrator
 Description=Open the current file with root privileges.
 Description[fr]=Ouvrir le fichier courant avec les privilèges administrateur.
 Desciption[nl]=Open het huidige bestand met administratorrechten (root).
-Website=https://github.com/Maestroschan/gedit-plugin-open-as-root
+Website=https://github.com/maoschanz/gedit-plugin-open-as-root

@@ -1,14 +1,19 @@
 # [Gedit plugin] Open as root
 
-A gedit plugin opening the current document as root.
+A gedit plugin opening the current document as root (100% compatible with *Wayland*).
 
-For **gedit >= 3.22** (100% compatible with *Wayland*).
+![](https://i.imgur.com/XThQy0i.png)
 
-![](https://i.imgur.com/aQemHv5.png)
+## Requirements
 
-## Installation 
+- **gedit ≥ 3.22**
+- polkitd (it should already be here don't worry)
 
-- Move `open_as_root.plugin` and `open_as_root.py` to `~/.local/share/gedit/plugins/`
+## Installation
+
+- Run `install.sh`
 - Restart *gedit*
 - Activate the plugin in *Preferences*.
+
+----
 

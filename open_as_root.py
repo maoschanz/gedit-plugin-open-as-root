@@ -4,9 +4,9 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gtk, Gedit, Gio
 
-class SaveAsRootAppActivatable(GObject.Object, Gedit.AppActivatable):
+class OpenAsRootAppActivatable(GObject.Object, Gedit.AppActivatable):
 	app = GObject.property(type=Gedit.App)
-	__gtype_name__ = "SaveAsRootAppActivatable"
+	__gtype_name__ = 'OpenAsRootAppActivatable'
 	
 	def __init__(self):
 		GObject.Object.__init__(self)
@@ -22,13 +22,13 @@ class SaveAsRootAppActivatable(GObject.Object, Gedit.AppActivatable):
 
 class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 	window = GObject.property(type=Gedit.Window)
-	__gtype_name__ = "OpenAsRootWindowActivatable"
+	__gtype_name__ = 'OpenAsRootWindowActivatable'
 	
 	def __init__(self):
 		GObject.Object.__init__(self)
 	
 	def do_activate(self):
-		# Defining the action which was set earlier to the menu item earlier.
+		# Defining the action which was set to the menu item earlier.
 		action = Gio.SimpleAction(name='open_as_root')
 		action.connect('activate', self.action_cb)
 		self.window.add_action(action)
@@ -61,7 +61,8 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 	
 	def action_cb(self, action, data):
 		doc = self.window.get_active_document()
-		gfile = Gio.File.new_for_uri('admin://' + doc.get_uri_for_display())
+		admin_uri = 'admin://' + doc.get_uri_for_display()
+		gfile = Gio.File.new_for_uri(admin_uri)
 		self.window.create_tab_from_location(gfile, None, 0, 0, False, True)
 
 	############################################################################
