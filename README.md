@@ -15,5 +15,4 @@ A gedit plugin opening the current document as root (100% compatible with *Wayla
 - Restart *gedit*
 - Activate the plugin in *Preferences*.
 
-----
 

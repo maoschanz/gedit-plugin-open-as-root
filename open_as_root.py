@@ -20,6 +20,9 @@ class OpenAsRootAppActivatable(GObject.Object, Gedit.AppActivatable):
 		self.menu_item = None
 		self.menu_ext = None
 
+	############################################################################
+################################################################################
+
 class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 	window = GObject.property(type=Gedit.Window)
 	__gtype_name__ = 'OpenAsRootWindowActivatable'
@@ -50,10 +53,11 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 		if self.window.get_active_document() is None:
 			# if there is no document, we disable the action, so we don't get NoneException
 			return False
-		elif self.window.get_active_document().get_location() is None:
+		file_location = self.window.get_active_document().get_file().get_location()
+		if file_location is None:
 			# if the document isn't saved, we disable the action, so we don't get NoneException
 			return False
-		elif 'admin' in self.window.get_active_document().get_location().get_uri_scheme():
+		elif 'admin' in file_location.get_uri_scheme():
 			# if the document is already opened as root, we disable the action too
 			return False
 		else:
@@ -67,3 +71,4 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 
 	############################################################################
 ################################################################################
+
