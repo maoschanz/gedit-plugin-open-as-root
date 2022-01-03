@@ -6,13 +6,12 @@ A gedit plugin opening the current document as root (100% compatible with *Wayla
 
 ## Requirements
 
-- **gedit ≥ 3.22**
+- gedit **between 3.22 and 3.38**
 - polkitd (it should already be here don't worry)
 
 ## Installation
 
 - Run `install.sh`
 - Restart *gedit*
-- Activate the plugin in *Preferences*.
-
+- Enable the plugin in *Preferences*.
 

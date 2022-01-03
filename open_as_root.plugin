@@ -3,10 +3,11 @@ Loader=python3
 Module=open_as_root
 IAge=3
 Name=Open as admin
-Version=2.0
+Version=2.1
 Name[fr]=Ouvrir en tant qu'admin
 Name[nl]=Openen als administrator
 Description=Open the current file with root privileges.
 Description[fr]=Ouvrir le fichier courant avec les privilèges administrateur.
 Desciption[nl]=Open het huidige bestand met administratorrechten (root).
 Website=https://github.com/maoschanz/gedit-plugin-open-as-root
+

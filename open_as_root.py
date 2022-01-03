@@ -65,7 +65,8 @@ class OpenAsRootWindowActivatable(GObject.Object, Gedit.WindowActivatable):
 	
 	def action_cb(self, action, data):
 		doc = self.window.get_active_document()
-		admin_uri = 'admin://' + doc.get_uri_for_display()
+		normal_uri = doc.get_file().get_location().get_uri()
+		admin_uri = normal_uri.replace('file://', 'admin://', 1)
 		gfile = Gio.File.new_for_uri(admin_uri)
 		self.window.create_tab_from_location(gfile, None, 0, 0, False, True)
 
