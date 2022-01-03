@@ -6,7 +6,7 @@ A gedit plugin opening the current document as root (100% compatible with *Wayla
 
 ## Requirements
 
-- gedit **between 3.22 and 3.38**
+- gedit **≥ 3.22**
 - polkitd (it should already be here don't worry)
 
 ## Installation
